@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun CharactersScreen() {
-    Box(Modifier.fillMaxSize().background(Color.Red)) {
+    Box(Modifier.fillMaxSize().background(Color.Cyan)) {
         Text("Characters Screen")
     }
 }
