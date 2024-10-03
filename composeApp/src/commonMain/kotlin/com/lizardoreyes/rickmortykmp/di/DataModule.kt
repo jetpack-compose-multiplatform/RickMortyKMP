@@ -1,6 +1,8 @@
 package com.lizardoreyes.rickmortykmp.di
 
+import com.lizardoreyes.rickmortykmp.data.RepositoryImpl
 import com.lizardoreyes.rickmortykmp.data.remote.ApiService
+import com.lizardoreyes.rickmortykmp.domain.Repository
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -27,6 +29,7 @@ var dataModule = module {
         }
     }
 
-    //factory { ApiService(get()) }
+    factory { ApiService(get()) }
     factoryOf(::ApiService)
+    factory<Repository>{ RepositoryImpl(get()) }
 }

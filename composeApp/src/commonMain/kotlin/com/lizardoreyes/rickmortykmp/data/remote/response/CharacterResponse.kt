@@ -1,5 +1,6 @@
 package com.lizardoreyes.rickmortykmp.data.remote.response
 
+import com.lizardoreyes.rickmortykmp.domain.model.CharacterModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -17,4 +18,15 @@ data class CharacterResponse(
     val type: String,
     @SerialName("image")
     val image: String
-)
+) {
+    fun toDomain(): CharacterModel {
+        return CharacterModel(
+            id = id,
+            name = name,
+            isAlive = status.lowercase() == "alive",
+            species = species,
+            type = type,
+            image = image
+        )
+    }
+}
