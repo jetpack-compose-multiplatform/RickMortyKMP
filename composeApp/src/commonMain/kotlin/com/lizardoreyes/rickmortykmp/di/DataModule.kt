@@ -2,6 +2,7 @@ package com.lizardoreyes.rickmortykmp.di
 
 import com.lizardoreyes.rickmortykmp.data.RepositoryImpl
 import com.lizardoreyes.rickmortykmp.data.remote.ApiService
+import com.lizardoreyes.rickmortykmp.data.remote.paging.CharactersPagingSource
 import com.lizardoreyes.rickmortykmp.domain.Repository
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
@@ -31,5 +32,6 @@ var dataModule = module {
 
     factory { ApiService(get()) }
     factoryOf(::ApiService)
-    factory<Repository>{ RepositoryImpl(get()) }
+    factory<Repository>{ RepositoryImpl(get(), get()) }
+    factoryOf(::CharactersPagingSource)
 }

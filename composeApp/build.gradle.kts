@@ -60,6 +60,9 @@ kotlin {
 
             implementation(libs.coil.compose)
             implementation(libs.coil.network.ktor)
+
+            implementation(libs.paging.compose.common)
+            implementation(libs.paging.common)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
