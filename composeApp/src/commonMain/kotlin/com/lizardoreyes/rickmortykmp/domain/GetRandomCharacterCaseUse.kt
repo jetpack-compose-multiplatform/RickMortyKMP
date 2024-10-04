@@ -10,6 +10,8 @@ class GetRandomCharacterCaseUse(private val repository: Repository) {
 
         //val characterDatabase = repository.getSavedCharacter()
 
+        repository.getCharacterDatabase()
+
         val random = (1..826).random().toString()
         return repository.getSingleCharacter(random)
     }

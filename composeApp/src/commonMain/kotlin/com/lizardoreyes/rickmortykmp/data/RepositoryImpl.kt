@@ -3,6 +3,7 @@ package com.lizardoreyes.rickmortykmp.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.lizardoreyes.rickmortykmp.data.database.RickMortyDatabase
 import com.lizardoreyes.rickmortykmp.data.remote.ApiService
 import com.lizardoreyes.rickmortykmp.data.remote.paging.CharactersPagingSource
 import com.lizardoreyes.rickmortykmp.domain.Repository
@@ -11,7 +12,8 @@ import kotlinx.coroutines.flow.Flow
 
 class RepositoryImpl(
     private val api: ApiService,
-    private val charactersPagingSource: CharactersPagingSource
+    private val charactersPagingSource: CharactersPagingSource,
+    private val rickMortyDatabase: RickMortyDatabase
 ) : Repository {
 
     companion object {
@@ -28,5 +30,9 @@ class RepositoryImpl(
             config = PagingConfig(pageSize = MAX_ITEMS, prefetchDistance = PREFETCH_ITEMS),
             pagingSourceFactory = { charactersPagingSource }
         ).flow
+    }
+
+    override suspend fun getCharacterDatabase() {
+        rickMortyDatabase.getPreferencesDao().getCharacterOfTheDayDatabase()
     }
 }

@@ -12,7 +12,10 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CharactersViewModel(val getRandomCharacterCaseUse: GetRandomCharacterCaseUse, private val repository: Repository): ViewModel() {
+class CharactersViewModel(
+    val getRandomCharacterCaseUse: GetRandomCharacterCaseUse,
+    private val repository: Repository
+) : ViewModel() {
     private val _state = MutableStateFlow<CharacterState>(CharacterState())
     val state: StateFlow<CharacterState> = _state
 
