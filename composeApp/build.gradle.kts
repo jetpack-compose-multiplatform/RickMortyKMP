@@ -63,6 +63,8 @@ kotlin {
 
             implementation(libs.paging.compose.common)
             implementation(libs.paging.common)
+
+            implementation(libs.kotlinx.datatime)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
