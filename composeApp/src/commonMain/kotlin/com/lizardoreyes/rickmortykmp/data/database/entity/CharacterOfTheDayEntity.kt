@@ -3,6 +3,8 @@ package com.lizardoreyes.rickmortykmp.data.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.lizardoreyes.rickmortykmp.domain.model.CharacterModel
+import com.lizardoreyes.rickmortykmp.domain.model.CharacterOfTheDayModel
 
 @Entity(tableName = "characteroftheday")
 data class CharacterOfTheDayEntity (
@@ -25,5 +27,19 @@ data class CharacterOfTheDayEntity (
     val image: String,
 
     @ColumnInfo(name = "selectedDate")
-    val selectedDate: String
-)
+    val selectedDay: String
+) {
+    fun toDomain(): CharacterOfTheDayModel {
+        return CharacterOfTheDayModel(
+            characterModel = CharacterModel(
+                id = id,
+                name = name,
+                isAlive = isAlive,
+                species = species,
+                type = type,
+                image = image
+            ),
+            selectedDay = selectedDay
+        )
+    }
+}

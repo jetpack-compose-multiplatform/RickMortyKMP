@@ -9,6 +9,7 @@ import com.lizardoreyes.rickmortykmp.data.database.entity.CharacterOfTheDayEntit
 
 const val DATABASE_NAME = "rickmorty.db"
 
+@Suppress("NO_ACTUAL_FOR_EXPECT")
 expect object RickMortyCTor: RoomDatabaseConstructor<RickMortyDatabase>
 
 @Database(entities = [CharacterOfTheDayEntity::class], version = 1)
