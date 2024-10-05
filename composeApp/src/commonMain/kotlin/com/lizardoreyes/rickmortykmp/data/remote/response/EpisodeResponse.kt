@@ -45,14 +45,14 @@ data class EpisodeResponse(
 
     private fun getVideoUrlFromSeason(season: SeasonEpisode): String {
         return when (season) {
-            SEASON_1 -> "https://www.youtube.com/watch?v=BFTSrbB2wII"
-            SEASON_2 -> "https://www.youtube.com/watch?v=_IZfO_LfK5Q"
-            SEASON_3 -> "https://www.youtube.com/watch?v=rLyOul8kau0"
-            SEASON_4 -> "https://www.youtube.com/watch?v=hl1U0bxTHbY"
-            SEASON_5 -> "https://www.youtube.com/watch?v=qbHYYXj2gMc"
-            SEASON_6 -> "https://www.youtube.com/watch?v=P9WZhGMlDBE"
-            SEASON_7 -> "https://www.youtube.com/watch?v=PkZtVBNkmso"
-            else -> "https://www.youtube.com/watch?v=Kvrt8_b6xsY"
+            SEASON_1 -> "https://firebasestorage.googleapis.com/v0/b/fir-example-80d7b.appspot.com/o/Rick%20and%20Morty_%20The%20Anime%20_%20Tr%C3%A1iler%20Oficial%20_%20Max.mp4?alt=media&token=96c756c4-2805-43aa-9aa4-1149f7de3f6d"
+            SEASON_2 -> "https://firebasestorage.googleapis.com/v0/b/fir-example-80d7b.appspot.com/o/Rick%20and%20Morty_%20The%20Anime%20_%20Tr%C3%A1iler%20Oficial%20_%20Max.mp4?alt=media&token=96c756c4-2805-43aa-9aa4-1149f7de3f6d"
+            SEASON_3 -> "https://firebasestorage.googleapis.com/v0/b/fir-example-80d7b.appspot.com/o/Rick%20and%20Morty_%20The%20Anime%20_%20Tr%C3%A1iler%20Oficial%20_%20Max.mp4?alt=media&token=96c756c4-2805-43aa-9aa4-1149f7de3f6d"
+            SEASON_4 -> "https://firebasestorage.googleapis.com/v0/b/fir-example-80d7b.appspot.com/o/Rick%20and%20Morty_%20The%20Anime%20_%20Tr%C3%A1iler%20Oficial%20_%20Max.mp4?alt=media&token=96c756c4-2805-43aa-9aa4-1149f7de3f6d"
+            SEASON_5 -> "https://firebasestorage.googleapis.com/v0/b/fir-example-80d7b.appspot.com/o/Rick%20and%20Morty_%20The%20Anime%20_%20Tr%C3%A1iler%20Oficial%20_%20Max.mp4?alt=media&token=96c756c4-2805-43aa-9aa4-1149f7de3f6d"
+            SEASON_6 -> "https://firebasestorage.googleapis.com/v0/b/fir-example-80d7b.appspot.com/o/Rick%20and%20Morty_%20The%20Anime%20_%20Tr%C3%A1iler%20Oficial%20_%20Max.mp4?alt=media&token=96c756c4-2805-43aa-9aa4-1149f7de3f6d"
+            SEASON_7 -> "https://firebasestorage.googleapis.com/v0/b/fir-example-80d7b.appspot.com/o/Rick%20and%20Morty_%20The%20Anime%20_%20Tr%C3%A1iler%20Oficial%20_%20Max.mp4?alt=media&token=96c756c4-2805-43aa-9aa4-1149f7de3f6d"
+            else -> "https://firebasestorage.googleapis.com/v0/b/fir-example-80d7b.appspot.com/o/Rick%20and%20Morty_%20The%20Anime%20_%20Tr%C3%A1iler%20Oficial%20_%20Max.mp4?alt=media&token=96c756c4-2805-43aa-9aa4-1149f7de3f6d"
         }
     }
 }
