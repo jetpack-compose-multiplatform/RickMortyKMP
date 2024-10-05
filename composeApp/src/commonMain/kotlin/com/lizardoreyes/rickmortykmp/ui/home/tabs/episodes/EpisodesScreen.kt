@@ -72,10 +72,7 @@ fun EpisodePlayer(playVideo: String, onCloseVideo: () -> Unit = {}) {
             modifier = Modifier.fillMaxWidth().height(250.dp).padding(16.dp)
                 .border(3.dp, Color.Green, CardDefaults.elevatedShape)
         ) {
-            Box(
-                modifier = Modifier.background(Color.Black).padding(16.dp),
-                contentAlignment = Alignment.Center
-            ) {
+            Box(modifier = Modifier.background(Color.Black)) {
                 Box(modifier = Modifier.padding(16.dp), contentAlignment = Alignment.Center) {
                     VideoPlayer(
                         modifier = Modifier.fillMaxWidth().height(200.dp),

@@ -5,6 +5,10 @@ import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import platform.Foundation.NSDocumentDirectory
+import platform.Foundation.NSFileManager
+import platform.Foundation.NSURL
+import platform.Foundation.NSUserDomainMask
 
 fun getDatabase(): RickMortyDatabase {
     val dbFile = "${fileDirectory()}/$DATABASE_NAME"
@@ -16,13 +20,13 @@ fun getDatabase(): RickMortyDatabase {
 
 @OptIn(ExperimentalForeignApi::class)
 fun fileDirectory(): String {
-    val documentDirectory: NSURL? = NSFileManager.defaultManager.URLsForDirectory(
+    val documentDirectory: NSURL? = NSFileManager.defaultManager.URLForDirectory(
         directory = NSDocumentDirectory,
-        inDomains = NSUserDomainMask,
+        inDomain = NSUserDomainMask,
         appropriateForURL = null,
         create = false,
         error = null
     )
 
-    return requiredNotNull(documentDirectory).path!!
+    return requireNotNull(documentDirectory).path!!
 }

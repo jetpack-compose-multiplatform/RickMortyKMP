@@ -7,6 +7,6 @@ import org.koin.dsl.module
 
 actual fun platformModule(): Module {
     return module {
-        single<RickMortyDatabase> { getDatabase(get()) }
+        single<RickMortyDatabase> { getDatabase() }
     }
 }
