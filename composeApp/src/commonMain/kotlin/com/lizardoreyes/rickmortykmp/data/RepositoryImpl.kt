@@ -7,15 +7,18 @@ import com.lizardoreyes.rickmortykmp.data.database.RickMortyDatabase
 import com.lizardoreyes.rickmortykmp.data.database.entity.CharacterOfTheDayEntity
 import com.lizardoreyes.rickmortykmp.data.remote.ApiService
 import com.lizardoreyes.rickmortykmp.data.remote.paging.CharactersPagingSource
+import com.lizardoreyes.rickmortykmp.data.remote.paging.EpisodesPagingSource
 import com.lizardoreyes.rickmortykmp.domain.Repository
 import com.lizardoreyes.rickmortykmp.domain.model.CharacterModel
 import com.lizardoreyes.rickmortykmp.domain.model.CharacterOfTheDayModel
+import com.lizardoreyes.rickmortykmp.domain.model.EpisodeModel
 import kotlinx.coroutines.flow.Flow
 
 class RepositoryImpl(
     private val api: ApiService,
     private val charactersPagingSource: CharactersPagingSource,
-    private val rickMortyDatabase: RickMortyDatabase
+    private val rickMortyDatabase: RickMortyDatabase,
+    private val episodesPagingSource: EpisodesPagingSource
 ) : Repository {
 
     companion object {
@@ -42,5 +45,12 @@ class RepositoryImpl(
         rickMortyDatabase.getPreferencesDao().saveCharacterOfTheDayDatabase(
             characterOfTheDay.toEntity()
         )
+    }
+
+    override fun getAllEpisodes(): Flow<PagingData<EpisodeModel>> {
+        return Pager(
+            config = PagingConfig(pageSize = MAX_ITEMS, prefetchDistance = PREFETCH_ITEMS),
+            pagingSourceFactory = { episodesPagingSource }
+        ).flow
     }
 }

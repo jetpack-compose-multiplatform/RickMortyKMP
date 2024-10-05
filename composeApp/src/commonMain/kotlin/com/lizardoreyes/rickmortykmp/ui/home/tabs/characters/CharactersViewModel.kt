@@ -17,8 +17,8 @@ class CharactersViewModel(
     val getRandomCharacterCaseUse: GetRandomCharacterCaseUse,
     private val repository: Repository
 ) : ViewModel() {
-    private val _state = MutableStateFlow<CharacterState>(CharacterState())
-    val state: StateFlow<CharacterState> = _state
+    private val _state = MutableStateFlow<CharactersState>(CharactersState())
+    val state: StateFlow<CharactersState> = _state
 
     init {
         viewModelScope.launch {

@@ -1,7 +1,5 @@
 package com.lizardoreyes.rickmortykmp.domain.model
 
-import kotlinx.serialization.SerialName
-
 data class CharacterModel(
     val id: Int,
     val name: String,
