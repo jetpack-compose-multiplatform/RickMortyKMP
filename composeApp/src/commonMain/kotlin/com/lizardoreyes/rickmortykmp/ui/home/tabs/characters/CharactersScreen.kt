@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,6 +30,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -38,7 +40,11 @@ import app.cash.paging.compose.LazyPagingItems
 import app.cash.paging.compose.collectAsLazyPagingItems
 import coil3.compose.AsyncImage
 import com.lizardoreyes.rickmortykmp.domain.model.CharacterModel
+import com.lizardoreyes.rickmortykmp.ui.core.BackgroundPrimaryColor
+import com.lizardoreyes.rickmortykmp.ui.core.DefaultTextColor
+import com.lizardoreyes.rickmortykmp.ui.core.Green
 import com.lizardoreyes.rickmortykmp.ui.core.ext.vertical
+import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
@@ -63,7 +69,7 @@ fun CharactersGridList(
     navigateToDetail: (CharacterModel) -> Unit = {}
 ) {
     LazyVerticalGrid(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
+        modifier = Modifier.fillMaxSize().background(BackgroundPrimaryColor).padding(horizontal = 16.dp),
         columns = GridCells.Fixed(2),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -71,7 +77,8 @@ fun CharactersGridList(
     ) {
         item(span = { GridItemSpan(2) }) {
             Column {
-                Text("Characters", color = Color.Black, fontSize = 24.sp)
+                Text("Characters", color = DefaultTextColor, fontSize = 24.sp, fontWeight = FontWeight.SemiBold)
+                Spacer(modifier = Modifier.height(6.dp))
                 CharacterOfTheDay(state.characterOfTheDay)
             }
         }
@@ -84,7 +91,7 @@ fun CharactersGridList(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier.fillMaxSize()
                     ) {
-                        CircularProgressIndicator(Modifier.size(64.dp), color = Color.Green)
+                        CircularProgressIndicator(Modifier.size(64.dp), color = Green)
                     }
                 }
             }
@@ -114,7 +121,7 @@ fun CharactersGridList(
                             contentAlignment = Alignment.Center,
                             modifier = Modifier.fillMaxHeight().height(100.dp)
                         ) {
-                            CircularProgressIndicator(Modifier.size(64.dp), color = Color.Green)
+                            CircularProgressIndicator(Modifier.size(64.dp), color = Green)
                         }
                     }
                 }
@@ -127,7 +134,7 @@ fun CharactersGridList(
 fun CharacterItemList(characterModel: CharacterModel, onItemSelected: (CharacterModel) -> Unit = {}) {
     Box(
         modifier = Modifier.clip(RoundedCornerShape(24))
-            .border(2.dp, Color.Green, shape = RoundedCornerShape(0, 24, 0, 24)).fillMaxWidth()
+            .border(2.dp, Green, shape = RoundedCornerShape(0, 24, 0, 24)).fillMaxWidth()
             .height(150.dp)
             .clickable { onItemSelected(characterModel) },
         contentAlignment = Alignment.BottomCenter
@@ -162,7 +169,7 @@ fun CharacterOfTheDay(characterModel: CharacterModel? = null) {
     Card(Modifier.fillMaxWidth().height(400.dp), shape = RoundedCornerShape(12)) {
         if (characterModel == null) {
             Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-                CircularProgressIndicator(color = Color.Green)
+                CircularProgressIndicator(color = Green)
             }
         } else {
             Box(contentAlignment = Alignment.BottomStart) {
