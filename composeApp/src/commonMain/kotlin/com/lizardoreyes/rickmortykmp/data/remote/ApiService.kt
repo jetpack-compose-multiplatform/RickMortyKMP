@@ -2,6 +2,7 @@ package com.lizardoreyes.rickmortykmp.data.remote
 
 import com.lizardoreyes.rickmortykmp.data.remote.response.CharacterResponse
 import com.lizardoreyes.rickmortykmp.data.remote.response.CharactersWrapperResponse
+import com.lizardoreyes.rickmortykmp.data.remote.response.EpisodeResponse
 import com.lizardoreyes.rickmortykmp.data.remote.response.EpisodesWrapperResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -23,5 +24,13 @@ class ApiService(private val client: HttpClient) {
         return client.get("/api/episode/") {
             parameter("page", page)
         }.body()
+    }
+
+    suspend fun getEpisodes(episodes: String): List<EpisodeResponse> {
+        return client.get("/api/episode/$episodes").body()
+    }
+
+    suspend fun getSingleEpisode(episodeId: String): EpisodeResponse {
+        return client.get("/api/episode/$episodeId").body()
     }
 }

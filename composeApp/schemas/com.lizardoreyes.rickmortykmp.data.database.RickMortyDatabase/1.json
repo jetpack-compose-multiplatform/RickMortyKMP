@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ce07d903aa71efa26a16a57f8bda75b3",
+    "identityHash": "1bb962157327ccd0caaaec31633c0222",
     "entities": [
       {
         "tableName": "characteroftheday",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `isAlive` INTEGER NOT NULL, `species` TEXT NOT NULL, `type` TEXT NOT NULL, `image` TEXT NOT NULL, `selectedDate` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `isAlive` INTEGER NOT NULL, `species` TEXT NOT NULL, `type` TEXT NOT NULL, `image` TEXT NOT NULL, `selectedDate` TEXT NOT NULL, `origin` TEXT NOT NULL, `gender` TEXT NOT NULL, `episodes` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -45,8 +45,26 @@
             "notNull": true
           },
           {
-            "fieldPath": "selectedDate",
+            "fieldPath": "selectedDay",
             "columnName": "selectedDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "origin",
+            "columnName": "origin",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "episodes",
+            "columnName": "episodes",
             "affinity": "TEXT",
             "notNull": true
           }
@@ -61,7 +79,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ce07d903aa71efa26a16a57f8bda75b3')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1bb962157327ccd0caaaec31633c0222')"
     ]
   }
 }

@@ -9,5 +9,8 @@ data class CharacterModel(
     val isAlive: Boolean,
     val species: String,
     val type: String,
-    val image: String
+    val image: String,
+    val gender: String,
+    val origin: String,
+    val episode: List<String>
 )
