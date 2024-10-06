@@ -48,16 +48,20 @@ import rickmortykmp.composeapp.generated.resources.rickface
 
 @OptIn(KoinExperimentalAPI::class)
 @Composable
-fun CharactersScreen() {
+fun CharactersScreen(navigateToDetail: (CharacterModel) -> Unit) {
     val charactersViewModel = koinViewModel<CharactersViewModel>()
     val state by charactersViewModel.state.collectAsState()
     val characters = state.characters.collectAsLazyPagingItems()
 
-    CharactersGridList(characters, state)
+    CharactersGridList(characters, state, navigateToDetail)
 }
 
 @Composable
-fun CharactersGridList(characters: LazyPagingItems<CharacterModel>, state: CharactersState) {
+fun CharactersGridList(
+    characters: LazyPagingItems<CharacterModel>,
+    state: CharactersState,
+    navigateToDetail: (CharacterModel) -> Unit = {}
+) {
     LazyVerticalGrid(
         modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
         columns = GridCells.Fixed(2),
@@ -97,7 +101,10 @@ fun CharactersGridList(characters: LazyPagingItems<CharacterModel>, state: Chara
                 // Ok response
                 items(characters.itemCount) { index ->
                     characters[index]?.let { characterModel ->
-                        CharacterItemList(characterModel)
+                        CharacterItemList(characterModel) {
+                            // Navigate to detail
+                            navigateToDetail(it)
+                        }
                     }
                 }
 
@@ -117,12 +124,12 @@ fun CharactersGridList(characters: LazyPagingItems<CharacterModel>, state: Chara
 }
 
 @Composable
-fun CharacterItemList(characterModel: CharacterModel) {
+fun CharacterItemList(characterModel: CharacterModel, onItemSelected: (CharacterModel) -> Unit = {}) {
     Box(
         modifier = Modifier.clip(RoundedCornerShape(24))
             .border(2.dp, Color.Green, shape = RoundedCornerShape(0, 24, 0, 24)).fillMaxWidth()
             .height(150.dp)
-            .clickable { },
+            .clickable { onItemSelected(characterModel) },
         contentAlignment = Alignment.BottomCenter
     ) {
         AsyncImage(

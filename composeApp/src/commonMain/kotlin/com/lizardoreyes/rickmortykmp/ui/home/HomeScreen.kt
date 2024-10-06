@@ -17,13 +17,13 @@ import com.lizardoreyes.rickmortykmp.ui.core.navigation.bottomnavigation.BottomB
 import com.lizardoreyes.rickmortykmp.ui.core.navigation.bottomnavigation.NavigationBottomWrapper
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(mainNavController: NavHostController) {
     val items = listOf(BottomBarItem.Episodes(), BottomBarItem.Characters())
     val navController = rememberNavController()
 
     Scaffold(bottomBar = { BottomNavigation(items, navController) }) { padding ->
         Box(modifier = Modifier.padding(padding)) {
-            NavigationBottomWrapper(navController)
+            NavigationBottomWrapper(navController,mainNavController)
         }
     }
 }
